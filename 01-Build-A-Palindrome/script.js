@@ -30,3 +30,10 @@ function handleCheckPalindrome() {  // Input validation
 	userInput.value = ''; // Clear input field
 }
 
+checkPalindromeBtn.addEventListener('click', handleCheckPalindrome);
+
+userInput.addEventListener('keydown', (e) => {
+	if (e.key === 'Enter') {
+	handleCheckPalindrome();
+	}
+});
