@@ -59,3 +59,22 @@ function convertToRoman(num) {
 return result;
 }
 
+function handleConversion() {   // Handle numerical conversion and display the converted number
+    const numberStr = document.getElementById('number').value;
+    const num = parseInt(numberStr, 10);
+    clearError();
+  
+    output.classList.remove('hidden'); // Remove the hidden flag to show the html element
+  
+    if (isValidNumber(numberStr, num)) {
+      output.innerText = convertToRoman(num);
+      }
+  }
+  
+  
+  form.addEventListener('submit', event => {
+    event.preventDefault();
+    handleConversion();
+  });
+  
+  convertButton.addEventListener('click', handleConversion); // On submit
