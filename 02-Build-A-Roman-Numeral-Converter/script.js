@@ -3,8 +3,32 @@ const convertButton = document.getElementById('convert-btn');
 const output = document.getElementById('output');
 
 // Input validation
+function isValidNumber(inputStr, num) {
+    if (!inputStr || inputStr.match(/[e.]/g)) {
+      displayError('Please enter a valid number.');
+      return false;
+    }
+    if (num < 1) {
+      displayError('Please enter a number greater than or equal to 1.');
+      return false;
+    }
+    if (num > 3999) {
+      displayError('Please enter a number less than or equal to 3999.');
+      return false;
+    }
+    return true;
+  }
 
 // Input error message
+function displayError(errorMessage) {
+    output.innerText = errorMessage;
+    output.classList.add('alert');
+  }
+  
+function clearError() {
+output.innerText = '';
+output.classList.remove('alert');
+}
 
 // Function to convert the number to Roman number
 function convertToRoman(num) {
