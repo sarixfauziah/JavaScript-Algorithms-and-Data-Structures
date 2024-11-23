@@ -4,7 +4,7 @@ const output = document.getElementById('output');
 
 // Input validation
 function isValidNumber(inputStr, num) {
-    if (!inputStr || inputStr.match(/[e.]/g)) {
+    if (!inputStr || inputStr.match(/[e.]/g)) { // str.match() dengan regex pattern
       displayError('Please enter a valid number.');
       return false;
     }
@@ -50,10 +50,13 @@ function convertToRoman(num) {
     let result = '';
 
     romanNumeralsMap.forEach(([roman, value]) => { // Looping the input number to the array above
-      while (num >= value) {
+      while (num >= value) { // while loop ini untuk mengurangi (substract) value dari input Integer (num) yang diberikan
         result += roman;
         num -= value;
       }
+      // while loop ini akan terus berjalan (iterate)
+      // sampai akhirnya input Integer (num) tadi bersisa kurang dari value paling kecil yang ada di Array Map (1)
+      // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/while
     });
 
 return result;
