@@ -14,7 +14,8 @@ const createPhoneNumberRegex = () => {
     return new RegExp(`${countryCode}${areaCode}${spacesDashes}${phoneNumber}`);
 };
 
-// Validate the input against the regex
+// Phone number validation function
+// to validate the input against the regex
 const validatePhoneNumber = (input, regex) => {
     if (input === '') return null; // Input validation kalau inputnya empty string
 
@@ -37,15 +38,15 @@ const appendResult = (parentNode, childNode) => parentNode.appendChild(childNode
 
 // Run the validation and handle the UI updates
 const handleCheck = (inputElement, resultsContainer) => {
-    const regex = createPhoneNumberRegex();
+    const regex = createPhoneNumberRegex(); // Calling the Regex function
     const inputValue = inputElement.value;
-    const isValid = validatePhoneNumber(inputValue, regex);
+    const isValid = validatePhoneNumber(inputValue, regex); // Calling the phone number validation function
 
     if (isValid !== null) {
         const resultElement = createResultElement(isValid, inputValue);
-        appendResult(resultsContainer, resultElement);
+        appendResult(resultsContainer, resultElement); // If valid -> update UI
     } else {
-        alert('Please provide a phone number');
+        alert('Please provide a phone number'); // If not valid -> alert popup
     }
 
     inputElement.value = '';
